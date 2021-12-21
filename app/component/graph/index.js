@@ -1,9 +1,12 @@
 import {VictoryLine, VictoryChart, VictoryTheme} from 'victory-native';
 
 import React from 'react';
-import {View} from 'react-native';
+import {Dimensions, View} from 'react-native';
 
-const LineGraph = ({data}) => {
+const {width, height} = Dimensions.get('screen');
+
+
+const LineGraph = ({data = data}) => {
   return (
     <View>
       {/* <VictoryChart theme={VictoryTheme.material}> */}
