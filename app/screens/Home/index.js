@@ -1,6 +1,8 @@
 import React from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {Image, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import LineGraph from '../../component/graph';
+import {APP_BLACK, APP_LIGHT2} from '../../constants/constants';
+import {styles} from './styles';
 
 const data = [
   {date: 11, excercise_hours: 2},
@@ -14,11 +16,37 @@ const data = [
 
 const Home = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Home Screens</Text>
-        <LineGraph data={data} />
-      </View>
+    <SafeAreaView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <View style={styles.prpfileContainer}>
+            <Image
+              source={require('../../assets/icons/profileimage.png')}
+              style={styles.profileImageContainer}
+            />
+            <Text style={styles.profileName}>Sarah</Text>
+          </View>
+          <View>
+            <LineGraph data={data} showAxis={false} />
+          </View>
+          <View style={styles.excerciseContainer}>
+            <Text style={styles.excerciselabel}>Exerciese Time</Text>
+            <Text style={styles.excerciseDateStyle}>
+              {'Mon, Wed | 10-10:30 AM'}
+            </Text>
+          </View>
+        </View>
+        <View
+          style={{backgroundColor: APP_BLACK, height: 1, width: '100%'}}></View>
+        <View
+          style={{
+            ...styles.excerciseContainer,
+            paddingHorizontal: 25,
+          }}>
+          <Text style={styles.excerciselabel}>Goal</Text>
+          <Text style={styles.excerciseDateStyle}>{'Legs, Belly'}</Text>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
